@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>Simon Game</title>
+    <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="sstyle.css">
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 </head>
 <body>
 
@@ -11,29 +16,28 @@
 <div id="circle">
   <button type="button" class="btn btn-primary"></button>
   <button type="button" class="btn btn-success"></button>
-  <button type="button" class="btn btn-info"></button>
+  <button type="button" class="btn btn-danger"></button>
   <button type="button" class="btn btn-warning"></button>
 
     <div id="circle2">
+     <p>Simon </p>
+     <table> <tr>
+     <td><div class="score"></div></td>
+     <td><button type="button" class="btn-start"></button></td>
+     <td><button type="button" class="btn-strict"></button></td>
+     </tr>
+     <tr>
+     <td>
+      <div class="checkbox">
+        <label>
+        <input type="checkbox" checked data-toggle="toggle" id="btn-toggle" data-on="On" data-off="Off">
+        </label>
+      </div>
+    </td>
+    </tr>
+     </table>
   </div>
   </div>
-  <!---
-  <div class="arc"></div>
-</div>
-<div id="arcs">
-    <div>
-        <div>
-        </div>
-    </div>
-</div>
-<div class="qLoader2"></div>
-<div class="curvedarrow"></div>
-
-<div class='circle'>
-  <div class='arc'></div>
-</div>
-        <div class="arc2"></div>
-        <div class="arc1"></div>
-        -->
+  </div>
 </body>
 </html>
