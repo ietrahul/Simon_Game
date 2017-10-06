@@ -13,7 +13,7 @@ body {
   margin: auto;
 }
 
-.btn{
+#circle button.btn{
   width: 200px;
   height: 200px;
   padding: 0px;
@@ -21,26 +21,26 @@ body {
   outline: none;
 }
 
-.btn-primary{
+#circle button.btn-primary{
   position: absolute;
   margin-left: -200px;
   border-radius: 195px 0px 0px 0px;
 }
 
-.btn-success{
+#circle button.btn-success{
    position: absolute;
   margin-left: 0px;
   border-radius: 0px 195px 0px 0px;
 }
 
-.btn-danger{
+#circle button.btn-danger{
   position: absolute;
   margin-left: -200px;
   border-radius: 0px 0px 0px 200px;
   margin-top: 200px;
 }
 
-.btn-warning{
+#circle button.btn-warning{
    position: absolute;
   margin-left: 0px;
   border-radius: 0px 0px 200px 0px;
@@ -63,8 +63,8 @@ body {
 
 p {
    position: relative;
-   margin-top: 30px;
-   font-size: 51Px;
+   margin-top: 14px;
+   font-size: 42Px;
    font-family: 'Alfa Slab One', cursive;
 }
 
@@ -74,7 +74,6 @@ p {
   border-radius: 5px;
   border: 4px solid #353333;
   background: maroon;
-  margin-left: 20px;
   margin-top: -7px;
 }
 
@@ -86,8 +85,15 @@ p {
   border: 2px solid #353333;
   box-shadow: 0 2px #353333;
   outline: none;
-  margin-left: 25px;
+  margin-left: 20px;
   margin-top: -7px;
+}
+
+.btn-start:active {
+  border-top: black 2px solid;
+  border-bottom: 2px #353333 solid;
+  box-shadow: 0 1px #353333;
+  transform: translateY(2px);
 }
 
 .btn-strict {
@@ -102,15 +108,32 @@ p {
   margin-top: -7px;
 }
 
-#btn-toggle {
-  width: 30px !important;
-  height: 30px;
-  border-radius: 5px;
+.btn-strict:active {
+  border-top: black 2px solid;
+  border-bottom: 2px #353333 solid;
+  box-shadow: 0 1px #353333;
+  transform: translateY(2px);
 }
 
-.toggle.btn {
+.toggle.btn, .toggle.btn:hover {
   width: 30px !important;
   height: 30px !important;
   border-radius: 5px;
-  border: 0px;
+  border: 2px solid black;
+  color: black;
+}
+
+.toggle-on.btn, .toggle-on.btn:hover {
+  background-color: blue;
+  color: black;
+}
+
+.toggle-off.btn, .toggle-off.btn:hover{
+  color: black;
+  background-color: red;
+}
+
+table, td {
+  text-align: center;
+  margin-left: 20px;
 }
