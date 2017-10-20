@@ -9,22 +9,23 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+    <script type="text/javascript" src="simongame.js"></script>
 </head>
 <body>
 
 <div class="container-fluid">
 <div id="circle">
-  <button type="button" class="btn btn-primary"></button>
-  <button type="button" class="btn btn-success"></button>
-  <button type="button" class="btn btn-danger"></button>
-  <button type="button" class="btn btn-warning"></button>
+  <button type="button" class="btn btn-primary" id="btn1"></button>
+  <button type="button" class="btn btn-success" id="btn2"></button>
+  <button type="button" class="btn btn-warning" id="btn3"></button>
+  <button type="button" class="btn btn-danger" id="btn4"></button>
 
     <div id="circle2">
      <p>Simon </p>
      <table> <tr>
-     <td><div class="score"></div></td>
-     <td><button type="button" class="btn-start"></button></td>
-     <td><button type="button" class="btn-strict"></button></td>
+     <td><div class="score" id="score"></div></td>
+     <td><button type="button" onclick="startGame()" class="btn-start"></button></td>
+     <td><button type="button" onclick="strictMode()" class="btn-strict"></button></td>
      </tr>
      <tr>
      <td>Score</td>
@@ -45,5 +46,9 @@
   </div>
   </div>
   </div>
+  <audio id="audio1" src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"></audio>
+  <audio id="audio2" src="https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"></audio>
+  <audio id="audio3" src="https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"></audio>
+  <audio id="audio4" src="https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"></audio>
 </body>
 </html>

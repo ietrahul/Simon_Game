@@ -26,6 +26,7 @@ body {
   position: absolute;
   margin-left: -200px;
   border-radius: 195px 0px 0px 0px;
+  background-color: #1f4994;
 }
 
 #circle button.btn-success{
@@ -76,6 +77,8 @@ p {
   border: 4px solid #353333;
   background: maroon;
   margin-top: -7px;
+  color: rgb(255, 0, 48);
+  font-size: x-large;
 }
 
 .btn-start {
@@ -121,16 +124,16 @@ p {
   height: 30px !important;
   border-radius: 5px;
   border: 2px solid black;
-  color: black;
+  color: white;
 }
 
 .toggle-on.btn, .toggle-on.btn:hover {
   background-color: blue;
-  color: black;
+  color: white;
 }
 
 .toggle-off.btn, .toggle-off.btn:hover{
-  color: black;
+  color: white;
   background-color: red;
 }
 
