@@ -12,7 +12,14 @@ $('#btn-toggle').change(function() {
 function displaySound(currentBtn, audioId) {
     console.log("currentBtn:" + currentBtn +"  audioId:" + audioId);
     document.getElementById(audioId).play();
+    setTimeout(function(){
+        document.getElementById(audioId).pause();
+       // player.currentTime = 0;
+    }, 3000);
+    //document.getElementById(audioId).play();
     var property = document.getElementById(currentBtn);
+    var OldBtnColor = property.style.backgroundColor ;
+    console.log("OldBtnColor:" + OldBtnColor);
     var btnColor;
     switch(currentBtn) {
     case "btn1":
@@ -57,6 +64,10 @@ myVar = setInterval(playNow, 3000);
 function playNow(){
      //for (i=0; i< score; i++){
         console.log("start--"+ start);
+    if (start > 0) {
+        document.getElementById("btn" + seq[start-1]).style.backgroundColor ="";
+    }
+
     if (start < score){
     var currentBtn = "btn" + seq[start];
     var audioId = "audio" + seq[start];
@@ -67,6 +78,7 @@ function playNow(){
      clearInterval(myVar);
      start = 0;
     }
+
   //}
 }
 
