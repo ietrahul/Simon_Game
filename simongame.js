@@ -1,4 +1,4 @@
-var score = 3, seq = [], myVar, start =0;
+var score = 5, seq = [], myVar, start =0, prevExampleId;
 $(document).ready(function() {
 
 $('#btn-toggle').change(function() {
@@ -9,18 +9,18 @@ $('#btn-toggle').change(function() {
     });
 });
 
-function displaySound(currentBtn, audioId) {
-    console.log("currentBtn:" + currentBtn +"  audioId:" + audioId);
+function displaySound(currentBtn, audioId, exampleId) {
+    console.log("currentBtn:" + currentBtn +"  audioId:" + audioId + " exampleId:" + exampleId);
     document.getElementById(audioId).play();
-    setTimeout(function(){
+   /*setTimeout(function(){
         document.getElementById(audioId).pause();
        // player.currentTime = 0;
-    }, 3000);
+    }, 3000);*/
     //document.getElementById(audioId).play();
     var property = document.getElementById(currentBtn);
-    var OldBtnColor = property.style.backgroundColor ;
-    console.log("OldBtnColor:" + OldBtnColor);
-    var btnColor;
+    //var OldBtnColor = property.style.backgroundColor ;
+    //console.log("OldBtnColor:" + OldBtnColor);
+    /*var btnColor;
     switch(currentBtn) {
     case "btn1":
         btnColor = "#0a5ef4";
@@ -37,8 +37,10 @@ function displaySound(currentBtn, audioId) {
     default:
         btnColor = "#FFFFFF";
 };
-  console.log("bg backgroundColor:" + btnColor);
-       property.style.backgroundColor = btnColor;
+  console.log("bg backgroundColor:" + btnColor);*/
+       prevExampleId = exampleId;
+       property.style.WebkitAnimationName = exampleId;
+       property.style.animationDuration = '3s';
 }
 
 function startGame(){
@@ -52,7 +54,7 @@ function startGame(){
   }
   console.log(seq);
 
-myVar = setInterval(playNow, 3000);
+myVar = setInterval(playNow, 5000);
 
   //document.getElementById('audio1').play();
   //setInterval(change, 1000);
@@ -64,15 +66,20 @@ myVar = setInterval(playNow, 3000);
 function playNow(){
      //for (i=0; i< score; i++){
         console.log("start--"+ start);
-    if (start > 0) {
-        document.getElementById("btn" + seq[start-1]).style.backgroundColor ="";
+    if (start > 0 && seq[start] != seq[start-1]) {
+        document.getElementById("btn" + seq[start-1]).style.WebkitAnimationName ="";
+        document.getElementById("btn" + seq[start-1]).style.animationDuration ="";
     }
 
     if (start < score){
     var currentBtn = "btn" + seq[start];
     var audioId = "audio" + seq[start];
+    var exampleId = "e" + seq[start];
+    if(exampleId === prevExampleId) {
+        exampleId = "e" + seq[start] * 10;
+      }
     start +=1;
-    displaySound(currentBtn, audioId);
+    displaySound(currentBtn, audioId, exampleId);
     } else {
      //setInterval(displaySound(currentBtn, audioId), 2000);
      clearInterval(myVar);

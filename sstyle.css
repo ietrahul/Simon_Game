@@ -49,8 +49,6 @@ body {
   margin-top: 200px;
 }
 
-
-
 #circle2 {
   position: relative;
   width: 216px;
@@ -140,4 +138,44 @@ p {
 table, td {
   text-align: center;
   margin-left: 20px;
+}
+
+@keyframes e1 {
+  from {opacity: 0.1;}
+  to {opacity: 1}
+}
+
+@keyframes e10 {
+  from {opacity: 0.1;}
+  to {opacity: 1}
+}
+
+@keyframes e2 {
+  from {opacity: 0.1;}
+  to {opacity: 1}
+}
+
+@keyframes e20 {
+  from {opacity: 0.1;}
+  to {opacity: 1}
+}
+
+@keyframes e3 {
+  from {opacity: 0.1;}
+  to {opacity: 1}
+}
+
+@keyframes e30 {
+  from {opacity: 0.1;}
+  to {opacity: 1}
+}
+
+@keyframes e4 {
+  from {opacity: 0.2;}
+  to {opacity: 1}
+}
+
+@keyframes e40 {
+  from {opacity: 0.2;}
+  to {opacity: 1}
 }
