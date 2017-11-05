@@ -1,4 +1,4 @@
-var score = 1, seq = [], myVar, start =0, prevExampleId, timer, count =0;
+var score = 1, seq = [], myVar, start =0, prevExampleId, timer, count =0, wait10Sec=0;
 var scoreElementId;
 
 $(document).ready(function() {
@@ -48,39 +48,45 @@ function playNow(){
     }
 
     if (start < score){
-    var currentBtn = "btn" + seq[start];
-    var audioId = "audio" + seq[start];
-    var exampleId = "e" + seq[start];
-    if(exampleId === prevExampleId) {
+      var currentBtn = "btn" + seq[start];
+      var audioId = "audio" + seq[start];
+      var exampleId = "e" + seq[start];
+      if(exampleId === prevExampleId) {
         exampleId = "e" + seq[start] * 10;
       }
-    start +=1;
-    displaySound(currentBtn, audioId, exampleId);
-    } else {
+      start +=1;
+      displaySound(currentBtn, audioId, exampleId);
+       if(start === score ){
+        setPointerEvents("auto");
+       }
+    }
+     else {
         console.log("turn count --"+ start)
         // btnElements = document.getElementsByClassName('btn');
         document.getElementById("btn" + seq[start-1]).style.WebkitAnimationName ="";
         document.getElementById("btn" + seq[start-1]).style.animationDuration ="";
-        document.getElementById('btn1').style.pointerEvents = "auto";
-        document.getElementById('btn2').style.pointerEvents = "auto";
-        document.getElementById('btn3').style.pointerEvents = "auto";
-        document.getElementById('btn4').style.pointerEvents = "auto";
-       //timer = setTimeout(5000, lost());
-       //clearIntervadocument.getElementsByClassName('btn')l(myVar);
-       //start = 0;
+        wait10Sec +=1;
+        if (wait10Sec > 2) lost();
     }
 }
 
 function validate(id){
-    console.log("validate id--" + id +"--seq[count]--"+seq[count]);
+    document.getElementById("audio" + id).play();
+    console.log("validate id--" + id +"--seq[count]--"+seq[count] +" :count: "+count);
+    wait10Sec = 0;
     //clearTimeout(timer);
     if (id === seq[count]) {
       count +=1;
         if (count == score){
           score += 1;
+          if(count == 3) {
+            scoreElementId.innerHTML = "Won!";
+            reset();
+          } else {
+            scoreElementId.innerHTML = score < 10 ? '0' + score: score;
+          }
           count = 0;
           start = 0;
-          scoreElementId.innerHTML = score;
           setPointerEvents("none");
         }
       //timer = setTimeout(5000, lost());
@@ -91,15 +97,21 @@ function validate(id){
 
 function lost(){
     console.log("lost");
-   clearInterval(myVar);
    //clearTimeout(timer);
    //console.log('scoreElementId:' + scoreElementId);
    document.getElementById("audio4").play();
+   document.getElementById("audio3").play();
    document.getElementById("audio1").play();
    scoreElementId.innerHTML = "! !";
+   reset();
+}
+
+function reset(){
+   clearInterval(myVar);
    score = 1;
    start = 0;
    count = 0;
+   wait10Sec = 0;
    setPointerEvents("none");
 }
 
