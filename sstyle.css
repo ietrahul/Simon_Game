@@ -110,6 +110,18 @@ p {
   margin-top: -7px;
 }
 
+#circle3 {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #353333;
+  border: 4px solid #353333;
+  margin: auto;
+  margin-left: 25px;
+  margin-top: -22px;
+}
+
 .btn-strict:active {
   border-top: black 2px solid;
   border-bottom: 2px #353333 solid;
@@ -146,36 +158,41 @@ table, td {
 }
 
 @keyframes e10 {
-  from {opacity: #0073e6;}
-  to {opacity: #99e6ff}
+  from {background-color: #0073e6;}
+  to {background-color: #99e6ff}
 }
 
 @keyframes e2 {
-  from {opacity: 0.1;}
-  to {opacity: 1}
+  from {background-color: #00b300;}
+  to {background-color: #1aff1a}
 }
 
 @keyframes e20 {
-  from {opacity: 0.1;}
-  to {opacity: 1}
+  from {background-color: #00b300;}
+  to {background-color: #1aff1a}
 }
 
 @keyframes e3 {
-  from {opacity: 0.1;}
-  to {opacity: 1}
+  from {background-color: #e6ac00;}
+  to {background-color: #ffff99}
 }
 
 @keyframes e30 {
-  from {opacity: 0.1;}
-  to {opacity: 1}
+  from {background-color: #e6ac00;}
+  to {background-color: #ffff99}
 }
 
 @keyframes e4 {
-  from {opacity: 0.2;}
-  to {opacity: 1}
+  from {background-color: #e60000;}
+  to {background-color: #ffcccc}
 }
 
 @keyframes e40 {
-  from {opacity: 0.2;}
-  to {opacity: 1}
+  from {background-color: #e60000;}
+  to {background-color: #ffcccc}
+}
+
+@keyframes flash {
+    from {color: maroon;}
+    to {color: rgb(255, 0, 48);}
 }

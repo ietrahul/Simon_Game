@@ -1,4 +1,4 @@
-var score = 1, seq = [], myVar, start =0, prevExampleId, timer, count =0, wait10Sec=0;
+var score = 1, seq = [], myVar, start =0, prevExampleId, timer, count =0, wait10Sec=0, isStrict = false;
 var scoreElementId;
 
 $(document).ready(function() {
@@ -79,7 +79,7 @@ function validate(id){
       count +=1;
         if (count == score){
           score += 1;
-          if(count == 3) {
+          if(count == 20) {
             scoreElementId.innerHTML = "Won!";
             reset();
           } else {
@@ -103,7 +103,19 @@ function lost(){
    document.getElementById("audio3").play();
    document.getElementById("audio1").play();
    scoreElementId.innerHTML = "! !";
-   reset();
+   if(isStrict){
+    reset();
+   }
+   else{
+     start -= 1;
+     count = 0;
+     wait10Sec = 0;
+     setPointerEvents("none");
+     scoreElementId.style.WebkitAnimationName = 'flash';
+     scoreElementId.style.animationDuration = '2s';
+     scoreElementId.innerHTML = score < 10 ? '0' + score: score;
+   }
+
 }
 
 function reset(){
@@ -116,9 +128,20 @@ function reset(){
 }
 
 function setPointerEvents(value){
-    document.getElementById('btn1').style.pointerEvents = value;
+   document.getElementById('btn1').style.pointerEvents = value;
    document.getElementById('btn2').style.pointerEvents = value;
    document.getElementById('btn3').style.pointerEvents = value;
    document.getElementById('btn4').style.pointerEvents = value;
+}
+
+function strictMode(){
+  if (document.getElementById('btn-toggle').checked) {
+    if (isStrict) {
+        document.getElementById('circle3').style.background = "#353333";
+    } else {
+        document.getElementById('circle3').style.background = "red";
+    }
+     isStrict = !isStrict;
+  }
 }
 
