@@ -1,12 +1,19 @@
-var score = 1, seq = [], myVar, start =0, prevExampleId, timer, count =0, wait10Sec=0, isStrict = false;
+var score = 1, seq = [], myVar, start =0, prevExampleId, count =0, wait10Sec=0, isStrict = false, isOn = false;
 var scoreElementId;
 
 $(document).ready(function() {
   $('#btn-toggle').change(function() {
         if (document.getElementById('btn-toggle').checked) {
            // console.log("i m here--");
+            isOn = true;
             scoreElementId = document.getElementById("score");
             $(".score").html("- -");
+        } else{
+            clearInterval(myVar);
+            score = 1; seq = []; myVar = null; start = 0; prevExampleId = null;  count =0; wait10Sec=0; isStrict = false;
+            isOn = false;
+            $(".score").html("");
+            document.getElementById('circle3').style.background = "#353333";
         }
     });
 });
@@ -27,6 +34,7 @@ function displaySound(currentBtn, audioId, exampleId) {
 function startGame(){
    // console.log("In startGame:" + score.value);
   //reset seq
+  if (isOn){
   seq = [];
   scoreElementId.innerHTML = "01";
   for (i=0; i<20; i++){
@@ -34,8 +42,8 @@ function startGame(){
    seq.push(Math.floor((Math.random() * 4) + 1));
   }
   console.log(seq);
-
-myVar = setInterval(playNow, 4000);
+  myVar = setInterval(playNow, 4000);
+   }
 
 }
 
@@ -74,7 +82,6 @@ function validate(id){
     document.getElementById("audio" + id).play();
     console.log("validate id--" + id +"--seq[count]--"+seq[count] +" :count: "+count);
     wait10Sec = 0;
-    //clearTimeout(timer);
     if (id === seq[count]) {
       count +=1;
         if (count == score){
@@ -89,7 +96,6 @@ function validate(id){
           start = 0;
           setPointerEvents("none");
         }
-      //timer = setTimeout(5000, lost());
     } else {
         lost();
     }
@@ -97,7 +103,6 @@ function validate(id){
 
 function lost(){
     console.log("lost");
-   //clearTimeout(timer);
    //console.log('scoreElementId:' + scoreElementId);
    document.getElementById("audio4").play();
    document.getElementById("audio3").play();
@@ -107,13 +112,15 @@ function lost(){
     reset();
    }
    else{
-     start -= 1;
+     clearInterval(myVar);
+     start = 0;
      count = 0;
      wait10Sec = 0;
      setPointerEvents("none");
      scoreElementId.style.WebkitAnimationName = 'flash';
      scoreElementId.style.animationDuration = '2s';
-     scoreElementId.innerHTML = score < 10 ? '0' + score: score;
+     setTimeout( function(){ scoreElementId.innerHTML = score < 10 ? '0' + score: score;}, 3000);
+     myVar = setInterval(playNow, 4000);
    }
 
 }
@@ -135,7 +142,7 @@ function setPointerEvents(value){
 }
 
 function strictMode(){
-  if (document.getElementById('btn-toggle').checked) {
+  if (isOn) {
     if (isStrict) {
         document.getElementById('circle3').style.background = "#353333";
     } else {
